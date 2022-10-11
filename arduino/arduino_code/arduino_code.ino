@@ -14,8 +14,6 @@ void setup() {
 void loop() {
   // light sensor
   int lightSensorValue = analogRead(A0);              // read the input on analog pin 0:
-  float voltage = lightSensorValue * (5.0 / 1023.0);  // Convert the analog reading (which goes from 0 - 1023) to a voltage (0 - 5V):
-  //Serial.println(voltage);                            // print out the value you read:
 
   if(lightSensorValue >= ANALOG_THRESHOLD)
     digitalWrite(LED_BUILTIN, HIGH); // turn on LED
@@ -33,8 +31,8 @@ void loop() {
 
   float hic = dht.computeHeatIndex(tempCelcius, humidity, false);
 
-  // return message format: <light_voltage>,<humidity(%)>,<temperature(*C)>,<feels_like(*C)>
-  Serial.print(voltage);
+  // return message format: <lightSensorValue>,<humidity(%)>,<temperature(*C)>,<feels_like(*C)>
+  Serial.print(lightSensorValue);
   Serial.print(",");
   Serial.print(humidity);
   Serial.print(",");
