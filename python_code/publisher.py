@@ -10,7 +10,7 @@ def publish(client, msg):
 
 ########################################
 ######### Init UART connection #########
-port_path = '/dev/tty.usbserial-A504XWBW'
+port_path = '/dev/ttyAMA0'
 # start communication 9600 8N1
 ser = serial.Serial(
   port = port_path,\
@@ -19,13 +19,13 @@ ser = serial.Serial(
   stopbits = serial.STOPBITS_ONE,\
   bytesize = serial.EIGHTBITS,\
   timeout = 0)
-print("connected to: " + ser.portstr)
+print("Connected to: " + ser.portstr)
 
 ########################################
 ######### Init MQTT connection #########
 broker = 'broker.emqx.io'
 port = 1883
-topic = "python/mqtt"
+topic = "python/mqtt/wireless"
 client_id = 'python-mqtt-389'       # generate client ID with pub prefix randomly
 username = 'wireless2-midproj'
 password = 'wireless2-midpw'
